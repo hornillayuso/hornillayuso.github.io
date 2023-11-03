@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hornillayuso - Tablón de Anuncios</title>
+<style>
+  body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; }
+  .container { width: 80%; margin: auto; overflow: hidden; }
+  header { background: #005a92; color: white; padding: 20px; text-align: center; }
+  #fixed-posts, #latest-posts { margin-top: 20px; }
+  .post { background: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+  .post img { max-width: 100%; border-radius: 5px; }
+  .post-title { color: #005a92; font-size: 1.5em; }
+  .post-date { color: #888; font-size: 0.9em; }
+  .post-content { margin-top: 10px; }
+  .post-tags { background: #ddd; padding: 5px; border-radius: 5px; display: inline-block; margin-right: 5px; }
+  .post-category { background: #ccc; padding: 5px; border-radius: 5px; display: inline-block; }
+  .photo-gallery { margin-top: 20px; }
+  .gallery-title { font-size: 1.2em; color: #333; margin-bottom: 10px; }
+  .gallery img { width: 100px; height: 100px; margin: 5px; border-radius: 5px; object-fit: cover; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tablón de Anuncios de Hornillayuso</h1>
+</header>
+<div class="container">
+  <section id="fixed-posts">
+    <!-- Aquí se añadirán las publicaciones fijas -->
+  </section>
+  <section id="latest-posts">
+    <!-- Aquí se añadirán las últimas publicaciones -->
+  </section>
+  <section class="photo-gallery">
+    <h2 class="gallery-title">Álbum de Fotos</h2>
+    <!-- Aquí se añadirán fotos desde Google Drive -->
+    <!-- Las imágenes están ocultas por defecto debido a que requeriría una API para cargar desde Google Drive -->
+    <img src="imagen1.jpg" alt="Foto 1" class="hidden">
+    <img src="imagen2.jpg" alt="Foto 2" class="hidden">
+  </section>
+</div>
+<script>
+  // Datos de ejemplo para las publicaciones
+  const fixedPosts = [
+    {
+      title: 'Bienvenida a la Web de Hornillayuso',
+      date: '2023-11-03',
+      content: 'Estrenamos nuestro tablón de anuncios digital para mantener a todos los vecinos informados.',
+      tags: ['inicio', 'bienvenida'],
+      category: 'General',
+      imageUrl: 'https://via.placeholder.com/400'
+    }
+    // Más publicaciones fijas...
+  ];
+
+  const latestPosts = [
+    {
+      title: 'Reunión del Ayuntamiento',
+      date: '2023-11-02',
+      content: 'Se convoca a los vecinos a la reunión del ayuntamiento el día 5 de Noviembre.',
+      tags: ['reunión', 'ayuntamiento'],
+      category: 'Eventos',
+      imageUrl: 'https://via.placeholder.com/400'
+    }
+    // Más últimas publicaciones...
+  ];
+
+  function createPostHtml(post) {
+    return `
+      <article class="post">
+        <img src="${post.imageUrl}" alt="${post.title}">
+        <h3 class="post-title">${post.title}</h3>
+        <p class="post-date">${post.date}</p>
+        <div class="post-content">${post.content}</div>
+        <div>${post.tags.map(tag => `<span class="post-tags">${tag}</span>`).join('')}</div>
+        <div><span class="post-category">${post.category}</span></div>
+      </article>
+    `;
+  }
+
+  function renderPosts() {
+    const fixedPostsContainer = document.getElementById('fixed-posts');
+    fixedPosts.forEach(post => {
+      fixedPostsContainer.innerHTML += createPostHtml(post);
+    });
+
+    const latestPostsContainer = document.getElementById('latest-posts');
+    latestPosts.forEach(post => {
+      latestPostsContainer.innerHTML += createPostHtml(post);
+    });
+  }
+
+  renderPosts();
+</script>
+</body>
+</html>
