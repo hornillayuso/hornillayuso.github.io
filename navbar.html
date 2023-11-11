@@ -10,6 +10,7 @@
         <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
                 <a href="index.html" class="nav-item nav-link active">Publicaciones</a>
+                <a href="index.html" class="nav-item nav-link">Archivo Histórico</a>
                 <!--div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                     <div class="dropdown-menu rounded-0 m-0">
@@ -22,4 +23,25 @@
         </div>
     </nav>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Obtener la URL actual
+    var currentPage = window.location.pathname.split("/").pop();
+
+    // Seleccionar todos los elementos de navegación
+    var navItems = document.querySelectorAll('.nav-item.nav-link');
+
+    // Iterar a través de los elementos de navegación
+    navItems.forEach(function(item) {
+        // Remover la clase 'active' de todos los elementos
+        item.classList.remove('active');
+
+        // Verificar si el href del ítem coincide con la página actual
+        if (item.getAttribute('href') === currentPage) {
+            // Agregar la clase 'active' al ítem correspondiente
+            item.classList.add('active');
+        }
+    });
+});
+</script>
 <!-- Navbar End -->
