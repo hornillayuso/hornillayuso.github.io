@@ -23,25 +23,4 @@
         </div>
     </nav>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Obtener la URL actual
-    var currentPage = window.location.pathname.split("/").pop();
-
-    // Seleccionar todos los elementos de navegación
-    var navItems = document.querySelectorAll('.nav-item.nav-link');
-
-    // Iterar a través de los elementos de navegación
-    navItems.forEach(function(item) {
-        // Remover la clase 'active' de todos los elementos
-        item.classList.remove('active');
-
-        // Verificar si el href del ítem coincide con la página actual
-        if (item.getAttribute('href') === currentPage) {
-            // Agregar la clase 'active' al ítem correspondiente
-            item.classList.add('active');
-        }
-    });
-});
-</script>
 <!-- Navbar End -->
